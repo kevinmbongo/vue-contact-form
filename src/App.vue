@@ -113,10 +113,10 @@ export default {
 
 <style scoped>
 .selectedButton {
-  @apply bg-blue-900 text-white border-2 rounded p-2 border-r-0 w-32;
+  @apply bg-blue-900 text-white border-2 rounded py-2 px-5 border-r-0 w-36 text-xl;
 }
 .UnselectedButton {
-  @apply bg-white text-blue-900 border-2 rounded p-2 border-r-0 w-32;
+  @apply bg-white text-blue-900 border-2 rounded py-2 px-6 border-r-0 w-36 text-xl;
 }
 .falseButton {
   @apply bg-gray-200 text-white  border-2 rounded mt-5 py-3 px-8 text-base font-bold;
