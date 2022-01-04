@@ -21,30 +21,41 @@
               { label: 'M.', value: 'm' },
             ]"
           />
-          <input type="text" />
-          <input type="text" />
-          <input type="text" />
+          <v-select />
+          <v-input placeholder="Nom *" type="text" />
+          <v-input placeholder="Prénom *" type="text" />
         </div>
       </section>
 
       <section>
         <div class="grid gap-4">
-          <input type="text" />
-          <input type="text" />
-          <textarea class="border-blue-900"></textarea>
+          <v-input
+            placeholder="Téléphone *"
+            type="tel"
+            hint="Pour couvenir d'un rendez-vous"
+          />
+          <v-input placeholder="Adresse email *" type="email" />
+          <v-textarea />
         </div>
       </section>
 
       <section class="col-span-2">
         <div class="grid gap-4">
-          <input type="text" />
-          <input type="text" />
-          <input type="text" />
+          <v-checkbox
+            text="J'accepte de recevoir l'actualité et les offres Suzuki par courrier électronique. À chaque email j'aurais la possibilité de mettre fin à toute communication."
+          />
+          <v-checkbox
+            text="Je souhaite recevoir des informations de la part de Suzuki par SMS."
+          />
+          <v-checkbox
+            text="J'ai pris connaissance de la politique de protection des données personnelles de Suzuki France. *"
+          />
+          <i>* Champs obligatoires</i>
         </div>
       </section>
 
       <footer class="col-span-2 flex justify-center">
-        <button>Envoyer ma demande</button>
+        <v-button text-button="Envoyer ma demande" />
       </footer>
     </article>
   </div>
@@ -52,10 +63,15 @@
 
 <script>
 import VToggle from '@/assets/component/VToggle'
+import VInput from '@/assets/component/VInput'
+import VSelect from '@/assets/component/VSelect'
+import VTextarea from '@/assets/component/VTextarea'
+import VCheckbox from '@/assets/component/VCheckbox'
+import VButton from '@/assets/component/VButton'
 
 export default {
   name: 'App',
-  components: { VToggle },
+  components: { VButton, VCheckbox, VTextarea, VSelect, VInput, VToggle },
 }
 </script>
 
@@ -64,5 +80,8 @@ input,
 textarea,
 button {
   @apply border border-blue;
+}
+i {
+  @apply text-sm;
 }
 </style>
