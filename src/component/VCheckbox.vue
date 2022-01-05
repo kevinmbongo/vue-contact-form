@@ -1,6 +1,6 @@
 <template>
   <div class="flex items-center">
-    <input :id="text" type="checkbox" />
+    <input :id="text" :checked="value" type="checkbox" @change="handleChange" />
 
     <label class="ml-4" :for="text"> {{ text }}</label>
   </div>
@@ -14,6 +14,17 @@ export default {
     text: {
       type: String,
       required: true,
+    },
+
+    value: {
+      type: Boolean,
+      required: true,
+    },
+  },
+
+  methods: {
+    handleChange(e) {
+      this.$emit('input', e.target.checked)
     },
   },
 }
