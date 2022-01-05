@@ -1,9 +1,7 @@
 <template>
-  <div>
-    <button>
-      {{ textButton }}
-    </button>
-  </div>
+  <button @click="$emit('click')">
+    {{ textButton }}
+  </button>
 </template>
 
 <script>
@@ -21,9 +19,14 @@ export default {
 
 <style scoped>
 button {
-  @apply bg-red px-5 py-2 rounded text-white text-base font-bold;
+  @apply border-none outline-none bg-red px-5 py-3 rounded text-white text-base font-bold;
 }
+
 button:hover {
   @apply bg-darkred transition-all ease-in-out duration-300;
+}
+
+button:focus {
+  @apply outline-none;
 }
 </style>

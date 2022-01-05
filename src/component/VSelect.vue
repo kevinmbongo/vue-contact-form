@@ -1,12 +1,36 @@
 <template>
-  <select id="" name="">
-    <option value="">CAP AUTOMOBILES 21 RUE D'AVIGNON 17140 LAGOR</option>
+  <select :value="value" @input="handleChange">
+    <option
+      v-for="salePoint in salePoints"
+      :key="salePoint.value"
+      :value="salePoint.value"
+    >
+      {{ salePoint.label }}
+    </option>
   </select>
 </template>
 
 <script>
 export default {
   name: 'VSelect',
+
+  props: {
+    salePoints: {
+      type: Array,
+      required: true,
+    },
+
+    value: {
+      type: String,
+      required: true,
+    },
+  },
+
+  methods: {
+    handleChange(e) {
+      this.$emit('input', e.target.value)
+    },
+  },
 }
 </script>
 

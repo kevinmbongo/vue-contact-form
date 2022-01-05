@@ -1,6 +1,6 @@
 <template>
   <textarea
-    rows="7"
+    rows="6"
     :value="value"
     placeholder="Message *"
     @input="handleInput"
@@ -27,7 +27,7 @@ export default {
 
 <style scoped>
 textarea {
-  @apply border border-blue rounded w-full px-3;
+  @apply border border-blue rounded w-full px-3 py-1;
 }
 ::placeholder {
   @apply text-blue text-base;

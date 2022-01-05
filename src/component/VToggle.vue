@@ -7,7 +7,7 @@
         v-for="(option, index) in options"
         :key="option.value"
         :class="{
-          active: activeOption === option.value,
+          active: value === option.value,
           'rounded-l border-l': index === 0,
           'rounded-r': index === options.length - 1,
         }"
@@ -33,19 +33,16 @@ export default {
       type: Array,
       required: true,
     },
-  },
 
-  data: () => ({
-    activeOption: null,
-  }),
-
-  mounted() {
-    this.activeOption = this.options[0].value
+    value: {
+      type: String,
+      required: true,
+    },
   },
 
   methods: {
     toggle(optionId) {
-      this.activeOption = optionId
+      this.$emit('input', optionId)
     },
   },
 }

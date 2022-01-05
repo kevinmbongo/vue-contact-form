@@ -8,6 +8,7 @@
       <section>
         <div class="grid gap-4">
           <v-toggle
+            v-model="customerType"
             label="Vous êtes"
             :options="[
               { label: 'Professionnel', value: 'pro' },
@@ -15,13 +16,27 @@
             ]"
           />
           <v-toggle
+            v-model="gender"
             label="Civilité"
             :options="[
               { label: 'Mme', value: 'mme' },
               { label: 'M.', value: 'm' },
             ]"
           />
-          <v-select />
+
+          <v-select
+            v-model="salePoint"
+            :sale-points="[
+              {
+                label: 'SAS AUTO',
+                value: '1782A',
+              },
+              {
+                label: 'CAP AUTOMOBILES ',
+                value: '1782B',
+              },
+            ]"
+          />
           <v-input v-model="firstName" placeholder="Nom *" type="text" />
           <v-input v-model="lastName" placeholder="Prénom *" type="text" />
         </div>
@@ -59,7 +74,7 @@
       </section>
 
       <footer class="col-span-2 flex justify-center">
-        <v-button text-button="Envoyer ma demande" />
+        <v-button text-button="Envoyer ma demande" @click="handleSubmit" />
       </footer>
     </article>
   </div>
@@ -79,21 +94,36 @@ export default {
   components: { VButton, VCheckbox, VTextarea, VSelect, VInput, VToggle },
 
   data: () => ({
-    customerType: null,
-    gender: null,
-    salePoint: null,
-    lastName: null,
-    firstName: null,
-    phone: null,
-    email: null,
-    message: null,
+    customerType: 'pro',
+    gender: 'mme',
+    salePoint: '1782A',
+    lastName: '',
+    firstName: '',
+    phone: '',
+    email: '',
+    message: '',
     emailingAd: false,
     smsAd: false,
     policyProctection: false,
   }),
+
   methods: {
-    handleInput(e) {
-      this.email = e
+    handleSubmit() {
+      const formState = {
+        customerType: this.customerType,
+        gender: this.gender,
+        salePoint: this.salePoint,
+        lastName: this.lastName,
+        firstName: this.firstName,
+        phone: this.phone,
+        email: this.email,
+        message: this.message,
+        emailingAd: this.emailingAd,
+        smsAd: this.smsAd,
+        policyProctection: this.policyProctection,
+      }
+
+      alert(JSON.stringify(formState))
     },
   },
 }
