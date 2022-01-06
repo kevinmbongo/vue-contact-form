@@ -69,7 +69,23 @@
             v-model="policyProctection"
             text="J'ai pris connaissance de la politique de protection des données personnelles de Suzuki France. *"
           />
-          <i>* Champs obligatoires</i>
+        </div>
+      </section>
+
+      <section class="col-span-2">
+        <div class="grid gap-4">
+          <v-radio
+            v-model="radioEmailing"
+            text="J'accepte de recevoir l'actualité et les offres Suzuki par courrier électronique. À chaque email j'aurais la possibilité de mettre fin à toute communication."
+          />
+          <v-radio
+            v-model="radioSms"
+            text="Je souhaite recevoir des informations de la part de Suzuki par SMS."
+          />
+          <v-radio
+            v-model="radioPolicy"
+            text="J'ai pris connaissance de la politique de protection des données personnelles de Suzuki France. *"
+          />
         </div>
       </section>
 
@@ -87,11 +103,20 @@ import VSelect from '@/component/VSelect'
 import VTextarea from '@/component/VTextarea'
 import VCheckbox from '@/component/VCheckbox'
 import VButton from '@/component/VButton'
+import VRadio from '@/component/VRadio'
 
 export default {
   name: 'App',
 
-  components: { VButton, VCheckbox, VTextarea, VSelect, VInput, VToggle },
+  components: {
+    VRadio,
+    VButton,
+    VCheckbox,
+    VTextarea,
+    VSelect,
+    VInput,
+    VToggle,
+  },
 
   data: () => ({
     customerType: 'pro',
@@ -105,6 +130,9 @@ export default {
     emailingAd: false,
     smsAd: false,
     policyProctection: false,
+    radioEmailing: true,
+    radioSms: false,
+    radioPolicy: false,
   }),
 
   methods: {
