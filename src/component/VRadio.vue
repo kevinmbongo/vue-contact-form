@@ -6,6 +6,7 @@
         :checked="value"
         type="radio"
         :name="radioName"
+        :required="required"
         @change="handleChange"
       />
       <label class="ml-4" :for="radio.value"> {{ radio.label }}</label>
@@ -31,6 +32,11 @@ export default {
     radios: {
       type: Array,
       required: true,
+    },
+
+    required: {
+      type: Boolean,
+      default: false,
     },
   },
 

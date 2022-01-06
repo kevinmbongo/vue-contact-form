@@ -1,6 +1,12 @@
 <template>
   <div class="flex items-center">
-    <input :id="text" :checked="value" type="checkbox" @change="handleChange" />
+    <input
+      :id="text"
+      :checked="value"
+      type="checkbox"
+      :required="required"
+      @change="handleChange"
+    />
 
     <label class="ml-4" :for="text"> {{ text }}</label>
   </div>
@@ -19,6 +25,11 @@ export default {
     value: {
       type: Boolean,
       required: true,
+    },
+
+    required: {
+      type: Boolean,
+      default: false,
     },
   },
 

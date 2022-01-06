@@ -1,5 +1,12 @@
 <template>
-  <button @click="$emit('click')">
+  <button
+    :class="{
+      'cursor-not-allowed bg-lightgray hover:bg-darkgray': disabled,
+      'bg-red  hover:bg-darkred ': !disabled,
+    }"
+    :disabled="disabled"
+    @click="$emit('click')"
+  >
     {{ textButton }}
   </button>
 </template>
@@ -13,17 +20,18 @@ export default {
       type: String,
       required: true,
     },
+
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
   },
 }
 </script>
 
 <style scoped>
 button {
-  @apply border-none outline-none bg-red px-5 py-3 rounded text-white text-base font-bold;
-}
-
-button:hover {
-  @apply bg-darkred transition-all ease-in-out duration-300;
+  @apply border-none outline-none px-5 py-3 rounded text-white text-base font-bold transition-all ease-in-out duration-300;
 }
 
 button:focus {

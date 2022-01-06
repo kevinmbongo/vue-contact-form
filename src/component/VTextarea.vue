@@ -3,6 +3,7 @@
     rows="6"
     :value="value"
     placeholder="Message *"
+    :required="required"
     @input="handleInput"
   ></textarea>
 </template>
@@ -15,6 +16,11 @@ export default {
     value: {
       type: String,
       required: true,
+    },
+
+    required: {
+      type: Boolean,
+      default: false,
     },
   },
   methods: {

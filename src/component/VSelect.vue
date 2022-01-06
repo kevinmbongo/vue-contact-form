@@ -4,6 +4,7 @@
       v-for="salePoint in salePoints"
       :key="salePoint.value"
       :value="salePoint.value"
+      :required="required"
     >
       {{ salePoint.label }}
     </option>
@@ -23,6 +24,11 @@ export default {
     value: {
       type: String,
       required: true,
+    },
+
+    required: {
+      type: Boolean,
+      default: false,
     },
   },
 
