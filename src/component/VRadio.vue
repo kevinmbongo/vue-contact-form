@@ -1,7 +1,15 @@
 <template>
-  <div class="flex items-center">
-    <input :id="text" :checked="value" type="radio" @change="handleChange" />
-    <label class="ml-4" :for="text"> {{ text }}</label>
+  <div class="grid gap-4">
+    <div v-for="radio in radios" :key="radio.value" class="flex items-center">
+      <input
+        :id="radio.value"
+        :checked="value"
+        type="radio"
+        :name="radioName"
+        @change="handleChange"
+      />
+      <label class="ml-4" :for="radio.value"> {{ radio.label }}</label>
+    </div>
   </div>
 </template>
 
@@ -10,15 +18,20 @@ export default {
   name: 'VRadio',
 
   props: {
-    text: {
+    radioName: {
       type: String,
       required: true,
     },
-  },
 
-  value: {
-    type: Boolean,
-    required: true,
+    value: {
+      type: Boolean,
+      required: true,
+    },
+
+    radios: {
+      type: Array,
+      required: true,
+    },
   },
 
   methods: {

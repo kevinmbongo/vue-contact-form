@@ -72,19 +72,28 @@
         </div>
       </section>
 
-      <section class="col-span-2">
+      <section class="col-span-2 mt-5">
         <div class="grid gap-4">
           <v-radio
             v-model="radioEmailing"
-            text="J'accepte de recevoir l'actualité et les offres Suzuki par courrier électronique. À chaque email j'aurais la possibilité de mettre fin à toute communication."
-          />
-          <v-radio
-            v-model="radioSms"
-            text="Je souhaite recevoir des informations de la part de Suzuki par SMS."
-          />
-          <v-radio
-            v-model="radioPolicy"
-            text="J'ai pris connaissance de la politique de protection des données personnelles de Suzuki France. *"
+            :radios="[
+              {
+                label:
+                  'Je souhaite recevoir des informations de la part de Suzuki par SMS.',
+                value: '1749C',
+              },
+              {
+                label:
+                  'Je souhaite recevoir des informations de la part de Suzuki par SMS.',
+                value: '1749D',
+              },
+              {
+                label:
+                  'Je souhaite recevoir des informations de la part de Suzuki par SMS.',
+                value: '1749E',
+              },
+            ]"
+            radio-name="Radio Emailing"
           />
         </div>
       </section>
