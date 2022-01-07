@@ -64,7 +64,7 @@
               type="tel"
               hint="Pour couvenir d'un rendez-vous"
               required
-              rules="phone"
+              rules="phone|"
             />
 
             <v-input
@@ -91,8 +91,7 @@
             <v-checkbox
               v-model="policyProctection"
               text="J'ai pris connaissance de la politique de protection des données personnelles de Suzuki France. *"
-              required
-              rules="required"
+              :rules="{ required: { allowFalse: false } }"
             />
           </div>
         </section>

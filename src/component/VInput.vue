@@ -61,8 +61,6 @@ export default {
 
   methods: {
     handleInput(e) {
-      if (this.value) this.$refs.provider.validate()
-
       this.$emit('input', e.target.value)
     },
   },

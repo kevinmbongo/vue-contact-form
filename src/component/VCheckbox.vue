@@ -1,20 +1,10 @@
 <template>
-  <validation-provider
-    v-slot="{ errors }"
-    ref="provider"
-    :rules="rules"
-    slim
-    class="flex items-center"
-  >
-    <input
-      :id="text"
-      :checked="value"
-      type="checkbox"
-      :required="required"
-      @change="handleChange"
-    />
+  <validation-provider v-slot="{ errors }" ref="provider" :rules="rules" slim>
+    <div class="flex items-center">
+      <input :id="text" :value="value" type="checkbox" @change="handleChange" />
 
-    <label class="ml-4" :for="text"> {{ text }}</label>
+      <label class="ml-4" :for="text"> {{ text }}</label>
+    </div>
     <i v-if="errors.length" class="text-red">{{ errors[0] }}</i>
   </validation-provider>
 </template>
@@ -37,7 +27,7 @@ export default {
 
     value: {
       type: Boolean,
-      required: true,
+      default: false,
     },
 
     required: {
@@ -46,7 +36,7 @@ export default {
     },
 
     rules: {
-      type: String,
+      type: [String, Object],
       default: null,
     },
   },
@@ -59,4 +49,8 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+i {
+  @apply not-italic block text-sm;
+}
+</style>
