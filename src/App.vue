@@ -44,12 +44,14 @@
               placeholder="Nom *"
               type="text"
               required
+              rules="required"
             />
             <v-input
               v-model="lastName"
               placeholder="Prénom *"
               type="text"
               required
+              rules="required"
             />
           </div>
         </section>
@@ -62,6 +64,7 @@
               type="tel"
               hint="Pour couvenir d'un rendez-vous"
               required
+              rules="phone"
             />
 
             <v-input
@@ -69,8 +72,9 @@
               placeholder="Adresse email *"
               type="email"
               required
+              rules="email"
             />
-            <v-textarea v-model="message" required />
+            <v-textarea v-model="message" required rules="required" />
           </div>
         </section>
 
@@ -88,6 +92,7 @@
               v-model="policyProctection"
               text="J'ai pris connaissance de la politique de protection des données personnelles de Suzuki France. *"
               required
+              rules="required"
             />
           </div>
         </section>
@@ -115,6 +120,7 @@
               ]"
               radio-name="Radio Emailing"
               :required="true"
+              rules="required"
             />
           </div>
         </section>
@@ -166,7 +172,7 @@ export default {
     message: '',
     emailingAd: false,
     smsAd: false,
-    policyProctection: false,
+    policyProctection: true,
     radioEmailing: true,
     radioSms: false,
     radioPolicy: false,

@@ -1,5 +1,11 @@
 <template>
-  <div class="grid gap-4">
+  <validation-provider
+    v-slot="{ errors }"
+    ref="provider"
+    :rules="rules"
+    slim
+    class="grid gap-4"
+  >
     <div v-for="radio in radios" :key="radio.value" class="flex items-center">
       <input
         :id="radio.value"
@@ -10,13 +16,20 @@
         @change="handleChange"
       />
       <label class="ml-4" :for="radio.value"> {{ radio.label }}</label>
+      <i v-if="errors.length" class="text-red">{{ errors[0] }}</i>
     </div>
-  </div>
+  </validation-provider>
 </template>
 
 <script>
+import { ValidationProvider } from 'vee-validate'
+
 export default {
   name: 'VRadio',
+
+  components: {
+    ValidationProvider,
+  },
 
   props: {
     radioName: {
@@ -37,6 +50,11 @@ export default {
     required: {
       type: Boolean,
       default: false,
+    },
+
+    rules: {
+      type: String,
+      default: null,
     },
   },
 

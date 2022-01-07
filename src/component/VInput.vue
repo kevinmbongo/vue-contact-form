@@ -1,10 +1,5 @@
 <template>
-  <validation-provider
-    v-slot="{ errors }"
-    ref="provider"
-    rules="required|email"
-    slim
-  >
+  <validation-provider v-slot="{ errors }" ref="provider" :rules="rules" slim>
     <input
       :type="type"
       :value="value"
@@ -29,6 +24,11 @@ export default {
   },
 
   props: {
+    rules: {
+      type: String,
+      required: true,
+    },
+
     placeholder: {
       type: String,
       required: true,

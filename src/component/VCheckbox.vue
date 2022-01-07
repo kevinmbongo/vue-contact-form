@@ -1,5 +1,11 @@
 <template>
-  <div class="flex items-center">
+  <validation-provider
+    v-slot="{ errors }"
+    ref="provider"
+    :rules="rules"
+    slim
+    class="flex items-center"
+  >
     <input
       :id="text"
       :checked="value"
@@ -9,12 +15,19 @@
     />
 
     <label class="ml-4" :for="text"> {{ text }}</label>
-  </div>
+    <i v-if="errors.length" class="text-red">{{ errors[0] }}</i>
+  </validation-provider>
 </template>
 
 <script>
+import { ValidationProvider } from 'vee-validate'
+
 export default {
   name: 'VCheckbox',
+
+  components: {
+    ValidationProvider,
+  },
 
   props: {
     text: {
@@ -30,6 +43,11 @@ export default {
     required: {
       type: Boolean,
       default: false,
+    },
+
+    rules: {
+      type: String,
+      default: null,
     },
   },
 
